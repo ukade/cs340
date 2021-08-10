@@ -1,0 +1,23 @@
+{{#each foo}}
+{{this}}
+{{/each}}
+<table>
+  <thead>
+    <th>Nonprofit Name:</th>   
+  </thead>
+  <tbody>
+    {{#each nonprofits}}
+    <tr>
+      <td>{{nonprofit_name}}</td>
+      <td><button onclick="deleteNonprofit({{nonprofit_id}})">Delete</button></td>      
+      <td><form action ="/nonprofits/{{nonprofit_id}}">
+		<input type="submit" value="Update"></form></td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <form id="addnonprofit" action="/nonprofits" method="post">
+  Nonprofit Name: <input type="text" name="nonprofit_name" required /><br>
+  
+  <input type="submit" value="submit">
+  </form>
+</table>

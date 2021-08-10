@@ -1,0 +1,12 @@
+<form id="update-maker" action"/makers" method="post">
+  First Name: <input type="text" name="first_name" value="{{maker.first_name}}" required /><br>
+  Last Name: <input type="text" name="last_name" value="{{maker.last_name}}" required /><br>
+  Phone Number: <input type="number" name="phone_num" value="{{maker.phone_num}}"><br>
+  City: <select name="maker_town" id="location-selector">
+  {{#each locations}}
+  <option value="{{location_id}}">{{location_town}}</option>
+  {{/each}}
+</select><br>
+</form>
+<button onclick="updateMaker({{maker.maker_id}})">Update</button>
+<script defer>selectLocation({{maker.maker_town}});</script>

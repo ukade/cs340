@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>Better Bracelets</title>
+<style>
+
+
+.bar {
+    font-size: 24px;
+    text-align: right;
+    background-color: #717171;
+    top: 0px;
+    margin: -8px;
+  }
+.dropbutton {
+    margin: auto;
+    text-align: right;
+    background-color: #717171;
+    font-size: 64px;
+    color: #000000;
+    right: 0px;
+    font-family: arial;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  } 
+  .dropbutton:hover {
+    background-color: #BABABA;
+  }  
+  .dropdown {
+    display: inline-block;
+  }  
+  .menu {
+    font-family: arial;
+    font-weight: bold;
+    display: none;
+    position: absolute;
+    right: 0px;
+    background-color: #f1f1f1;
+  }  
+  .menu a {
+    color: #000000;
+    padding: 10px 14px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .menu a:hover {
+    background-color: #DDDDDD;
+  } 
+  .show {
+    display:block;
+  }
+  body{
+    font-size: 20px;
+    font-family: 'Work Sans', sans-serif;
+    color: #333;
+    font-weight: 300;
+    background-color: #f8f6f0;
+  }
+  h1{
+    font-weight: 300;
+    margin: 0px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #444;
+    color: #fff;
+  }
+</style>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+
+{{#each jsscripts}}
+<script src="/static/{{this}}"></script>
+{{/each}}
+</head>
+<body>
+    <div class="bar">
+    <div class="dropdown">
+        <button onclick="dropIt()" class="dropbutton"><strong><font size="5">≡ Menu</font></strong></button>
+        <div id="mydrop" class="menu">
+        <a href="/index">Home</a>
+        <a href="/makers">Manage Makers</a>
+        <a href="/locations">Manage Locations</a>
+	<a href="/nonprofits">Manage Nonprofits</a>
+	<a href="/nonprofit_maker">Manage Makers' Nonprofits</a>
+        <a href="/commisions">Manage Commissions</a>
+	<a href="/products">Manage Products</a>
+	<a href="/commission_product">Manage Commissions' Products</a>
+
+</div>
+    </div>
+    </div>
+
+<p></p>
+{{{body}}}
+<script>
+function dropIt() {
+    document.getElementById("mydrop").classList.toggle("show");
+  }
+  
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbutton')) { 
+      var dropdowns = document.getElementsByClassName("menu");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+</body>
+
+</html>

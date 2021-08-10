@@ -1,0 +1,35 @@
+{{#each foo}}
+{{this}}
+{{/each}}
+<table>
+  <thead>
+    <th>First Name:</th>
+    <th>Last Name:</th>
+    <th>Phone Number:</th>
+    <th>City:</th>
+  </thead>
+  <tbody>
+    {{#each makers}}
+    <tr>
+      <td>{{first_name}}</td>
+      <td>{{last_name}}</td>
+      <td>{{phone_num}}</td>
+      <td>{{maker_town}}</td>
+      <td><button onclick="deleteMaker({{maker_id}})">Delete</button></td>      
+      <td><form action="/makers/{{maker_id}}">
+          <input type="submit" value="Update"></form></td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <form id="addmaker" action="/makers" method="post">
+  First Name: <input type="text" name="first_name" required /><br>
+  Last Name: <input type="text" name="last_name" required /><br>
+  Phone Number: <input type="number" name="phone_num"> *optional<br>
+  City: <select name="maker_town">
+    {{#each locations}}
+    <option value="{{location_id}}">{{location_town}}</option>
+    {{/each}}
+</select><br>
+  <input type="submit" value="submit">
+  </form>
+</table>

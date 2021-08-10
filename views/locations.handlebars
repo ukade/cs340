@@ -1,0 +1,25 @@
+{{#each foo}}
+{{this}}
+{{/each}}
+<table>
+  <thead>
+    <th>City Name:</th>
+    <th>Zip Code:</th>
+  </thead>
+  <tbody>
+    {{#each locations}}
+    <tr>
+      <td>{{location_town}}</td>
+      <td>{{location_zip}}</td>
+      <td><button onclick="deleteLocation({{location_id}})">Delete</button></td>      
+      <td><form action ="/locations/{{location_id}}">
+		<input type="submit" value="Update"></form></td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <form id="addlocation" action="/locations" method="post">
+  City Name: <input type="text" name="location_town" required /><br>
+  Zip Code: <input type="text" name="location_zip" required /><br>
+  <input type="submit" value="submit">
+  </form>
+</table>

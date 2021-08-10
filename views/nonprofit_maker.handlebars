@@ -1,0 +1,32 @@
+{{#each foo}}
+{{this}}
+{{/each}}
+<table>
+  <thead>
+    <th>Maker ID:</th>
+    <th>Nonprofit ID:</th>
+  </thead>
+  <tbody>
+    {{#each nonprofit_maker}}
+    <tr>
+      <td>{{m_id}}</td>
+      <td>{{n_id}}</td>
+      <td><button onclick="deleteNonprofit_maker({{m_id}}, {{n_id}})">Delete</button></td>      
+      
+    </tr>
+    {{/each}}
+  </tbody>
+  <form id="addnonprofit_maker" action="/nonprofit_maker" method="post">
+  Maker ID: <select name="m_id">
+    {{#each makers}}
+    <option value="{{maker_id}}">{{maker_id}}, {{first_name}} {{last_name}}</option>
+    {{/each}}
+</select><br>
+  Nonprofit ID: <select name="n_id">
+    {{#each nonprofits}}
+    <option value="{{nonprofit_id}}">{{nonprofit_id}}, {{nonprofit_name}}</option>
+   {{/each}}
+</select><br> 
+  <input type="submit" value="submit">
+  </form>
+</table>

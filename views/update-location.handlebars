@@ -1,0 +1,6 @@
+<form id="update-location" action"/locations" method="post">
+  First Name: <input type="text" name="location_town" value="{{location.location_town}}" required /><br>
+  Last Name: <input type="text" name="location_zip" value="{{location.location_zip}}" required /><br>
+
+</form>
+<button onclick="updateLocation({{location.location_id}})">Update</button>
