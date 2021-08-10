@@ -20,6 +20,11 @@ app.use('/nonprofits', require('./nonprofits.js'));
 
 app.use('/nonprofit_maker', require('./nonprofit_makers.js'));
 
+app.use('/commissions', require('./commissions.js'));
+
+app.use('/products', require('./products.js'));
+
+app.use('/commission_product', require('./commission_products.js'));
 
 app.use(function(req, res){
   res.render('index');

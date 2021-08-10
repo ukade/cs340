@@ -110,5 +110,23 @@ module.exports = function(){
      }
    })
   })
+
+  router.get('/reset-table',function(req,res,next){
+  var context = {};
+  mysql.pool.query("DROP TABLE IF EXISTS Makers", function(err){
+    var createString = "CREATE TABLE Makers("+
+    "maker_id INT NOT NULL,"+
+    "first_name VARCHAR NOT NULL,"+
+    "last_name VARCHAR NOT NULL,"+
+    "phone_num VARCHAR NOT NULL,"+
+    "maker_town INT NOT NULL,"+
+    "PRIMARY KEY (maker_id),"+
+    "FOREIGN KEY (maker_town) REFERENCES Locations(location_id)";
+    mysql.pool.query(createString, function(err){
+      context.results = "Table reset";
+      res.render('makers',context);
+    })
+  });
+});
 return router;
 }(); 

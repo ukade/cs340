@@ -1,0 +1,18 @@
+<h1>Update Commissions</h1>
+<br>
+  <form id="update_commission" action="/commissions" method="post">
+  Maker ID: <select name="m_id" id="commission-selector">
+    {{#each makers}}
+    <option value="{{maker_id}}">{{maker_id}}</option>
+    {{/each}}
+</select><br>
+  Finished: <input type="radio" name="finished" id="finished1" value="yes">
+        <label for="finished1">Yes</label>
+        <input type="radio" name="finished" id="finished2" value="no">
+        <label for="finished2">No</label><br>
+  Date Start: <input type="date" name="date_start" value="{{commission.date_start}}"><br>
+  Date Due: <input type="date" name="date_due" value="{{commission.date_due}}"><br>
+  Comments: <input type="text" name="comments" value="{{commission.comments}}"><br>
+  </form>
+<button onclick="updateCommission({{commission.commission_id}})">Update</button>
+<script defer>selectMaker({{maker.m_id}});</script>
